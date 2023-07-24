@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #1E1F1C, #1A1F1A);
+}
+
+.content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    border: 4px solid white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --position: 50%;
+}
+
+.content > img{
+    width: 100%;
+    height: 100%;
+}
+
+.filtro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* image-rendering: pixelated; */
+    backdrop-filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='b' x='0' y='0'%3E%3CfeFlood x='4' y='4' height='2' width='2'/%3E%3CfeComposite width='5' height='5'/%3E%3CfeTile result='a'/%3E%3CfeComposite in='SourceGraphic' in2='a' operator='in'/%3E%3CfeMorphology operator='dilate' radius='5'/%3E%3C/filter%3E%3C/svg%3E#b");;
+    height: 100%;
+    width: var(--position);
+}
+
+.img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% - var(--position));
+    height: 100%;
+}
+
+.separador {
+    position: absolute;
+    top: 0;
+    left: var(--position);
+    transform: translateX(-50%);
+    height: 100%;
+    width: 4px;
+    background: #fff;
+}
+
+.separator-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 0 30px 5px black;
+}
+
+.separator-center::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;    
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 60% 100%, 60% 70%, 80% 50%, 60% 30%, 60% 70%, 40% 70%, 40% 30%, 20% 50%, 40% 70%, 60% 70%, 80% 100%, 0% 100%);
+    background: #fff;
+    border-radius: 50%;
+}
+
+#slider-change {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: red;
+    border: none;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
